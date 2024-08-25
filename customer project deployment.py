@@ -13,36 +13,9 @@ data = data.dropna()
 data.isnull().sum()
 
 # Custom CSS for styling
-st.markdown("""
-    <style>
-    body {
-        background-color: #f5f7fa; /* Light blue-grey background color */
-        color: #333333; /* Dark grey font color */
-        font-family: 'Arial', sans-serif; /* Default font style */
-    }
-    .stButton button {
-        background-color: #4CAF50; /* Green background color for buttons */
-        color: white; /* White text on buttons */
-        border-radius: 5px; /* Rounded corners for buttons */
-        border: none; /* No border */
-        font-size: 16px; /* Larger font size */
-        padding: 10px 20px; /* Padding around the button */
-        cursor: pointer; /* Pointer cursor on hover */
-    }
-    .stHeader {
-        font-family: 'Courier New', Courier, monospace; /* Monospace font for headers */
-        color: #4B0082; /* Indigo font color for headers */
-        text-align: center; /* Center alignment for headers */
-    }
-    .stSubheader {
-        font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Fun, casual font style for subheaders */
-        color: #FF6347; /* Tomato red font color for subheaders */
-    }
-    .stMarkdown h3 {
-        color: #20B2AA; /* Light sea green color for markdown headers */
-    }
-    </style>
-""", unsafe_allow_html=True)
+st.markdown("""<style>body {background-color: #f5f7fa; /* Light blue-grey background color */color: #333333; /* Dark grey font color */font-family: 'Arial', sans-serif; /* Default font style */}.stButton button {background-color: #4CAF50; /* Green background color for buttons */color: white; /* White text on buttons */border-radius: 5px; /* Rounded corners for buttons */border: none; /* No border */font-size: 16px; /* Larger font size */padding: 10px 20px; /* Padding around the button */cursor: pointer; /* Pointer cursor on hover */}.stHeader {font-family: 'Courier New', Courier, monospace; /* Monospace font for headers */color: #4B0082; /* Indigo font color for headers */text-align: center; /* Center alignment for headers */}.stSubheader {font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* Fun, casual font style for subheaders */color: #FF6347; /* Tomato red font color for subheaders */}.stMarkdown h3 {color: #20B2AA; /* Light sea green color for markdown headers */}</style>""", unsafe_allow_html=True)
+
+
 # Preprocess the data
 data['Age'] = 2015 - data['Year_Birth']
 data['Spent'] = data['MntWines'] + data['MntFruits'] + data['MntMeatProducts'] + data['MntFishProducts'] + data['MntSweetProducts'] + data['MntGoldProds']
@@ -53,9 +26,7 @@ data['Family_Size'] = data['Living_With'].replace({'Alone': 1, 'Partner': 2}) + 
 data['Is_Parent'] = np.where(data.Children > 0, 1, 0)
 
 # Features used for clustering
-features = data[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts', 
-                 'MntSweetProducts', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response', 'Age', 'Spent', 'Children', 
-                 'Family_Size', 'Is_Parent']]
+features = data[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts', 'MntFishProducts','MntSweetProducts', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response', 'Age', 'Spent', 'Children','Family_Size', 'Is_Parent']]
 
 # Scale the features
 scaler = StandardScaler()
@@ -108,9 +79,7 @@ else:
 # Button to predict the cluster
 if st.sidebar.button("Predict Cluster"):
     # Preprocess and predict cluster
-    features = customer[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts',
-                         'MntFishProducts', 'MntSweetProducts', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response', 
-                         'Age', 'Spent', 'Children', 'Family_Size', 'Is_Parent']]
+    features = customer[['Income', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts','MntFishProducts', 'MntSweetProducts', 'AcceptedCmp1', 'AcceptedCmp2', 'Complain', 'Response','Age', 'Spent', 'Children', 'Family_Size', 'Is_Parent']]
 
     features_scaled = scaler.transform([features])
     cluster = kmeans.predict(features_scaled)[0]
