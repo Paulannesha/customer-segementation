@@ -1,6 +1,1 @@
-kmeans
-labelencoder
-pandas
-
-streamlit
 
