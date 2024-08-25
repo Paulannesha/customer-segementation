@@ -2,7 +2,7 @@ streamlit
 numpy
 pandas 
 joblib
-matplotlib.pyplot
+matplotlib
 seaborn
 StandardScaler
 KMeans
