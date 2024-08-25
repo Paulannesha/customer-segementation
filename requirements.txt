@@ -1,5 +1,10 @@
 numpy
 pandas 
 joblib
+matplotlib.pyplot
+seaborn
+sklearn.preprocessing
+StandardScaler
+sklearn.cluster
 KMeans
 streamlit
